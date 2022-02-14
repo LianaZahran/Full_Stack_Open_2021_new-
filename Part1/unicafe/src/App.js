@@ -8,15 +8,25 @@ const Button = (props) => {
   )
 }
 
-const DisplayFeedback = ({text, clicksNumber}) => {
+const Statistics = ({ average, positive, good, neutral, bad}) => {
+  console.log(good,bad,neutral);
+  if (good === 0 & neutral === 0 & bad === 0){
+    return(
+      <p><strong>No Feedback given </strong></p>
+    )
+  }
   return (
-    <p>{text} was clicked:<strong> {clicksNumber} </strong> times</p>
-  )
-}
+    <div>
+    <hr></hr>
+    <p>Good was clicked:<strong> {good} </strong> times</p>
+    <p>Neutral was clicked:<strong> {neutral} </strong> times</p>
+    <p>Bad was clicked:<strong> {bad} </strong> times</p>
+    <hr></hr>
+    <p>Feedback Average:<strong>{average}</strong></p>
+    <p>Feedback Positive:<strong>{positive}</strong></p>
 
-const MoreStatistics = ({text, feedbackType}) => {
-  return (
-    <p>Feedback {text}:  <strong>{feedbackType}</strong></p>
+    </div>
+   
    
   )
 }
@@ -56,15 +66,12 @@ const App = () => {
 
 
       <h1>Statistics</h1> 
-      <DisplayFeedback clicksNumber={good} text= "Good"/> 
-      <DisplayFeedback clicksNumber={neutral} text= "Neutral"/> 
-      <DisplayFeedback clicksNumber={bad} text= "Bad"/> 
-      
       <p>Total Number of Feedback:<strong>{allClicks.length}</strong></p>
-      <MoreStatistics  text = "Average" feedbackType={average} /> 
-      <MoreStatistics  text = "Positive" feedbackType={positive} /> 
+      <Statistics average={average} positive={positive} good={good} neutral={neutral} bad={bad}/> 
      
+
      
+
       
       
     </div>
