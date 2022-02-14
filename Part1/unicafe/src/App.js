@@ -7,6 +7,14 @@ const Button = (props) => {
     <button onClick={props.handleClick}>{props.text}</button>
   )
 }
+const StatisticLine = ({text, value}) => {
+  return (
+    <div>
+    <p>{text}: <strong> {value}</strong></p>
+    </div>
+    
+  )
+}
 
 const Statistics = ({ average, positive, good, neutral, bad}) => {
   console.log(good,bad,neutral);
@@ -18,13 +26,12 @@ const Statistics = ({ average, positive, good, neutral, bad}) => {
   return (
     <div>
     <hr></hr>
-    <p>Good was clicked:<strong> {good} </strong> times</p>
-    <p>Neutral was clicked:<strong> {neutral} </strong> times</p>
-    <p>Bad was clicked:<strong> {bad} </strong> times</p>
+    <StatisticLine text="Good" value ={good} />
+    <StatisticLine text="Neutral" value ={neutral} />
+    <StatisticLine text="Bad" value ={bad} />
     <hr></hr>
-    <p>Feedback Average:<strong>{average}</strong></p>
-    <p>Feedback Positive:<strong>{positive}</strong></p>
-
+    <StatisticLine text="Average" value ={average}/>
+    <StatisticLine text="Positive" value ={positive} />
     </div>
    
    
